@@ -1,13 +1,10 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
-
 import SwiftUI
 
 extension ContainerValues {
     @Entry var proportion: Double = 1
 }
 
-extension View {
+public extension View {
     /// Set the proportion of the container view that the view should occupy.
     /// Width or height depending on the container view
     ///
@@ -21,14 +18,18 @@ extension View {
 }
 
 /// A stack that places its subviews proportionally to its proposed size
-struct ProportionalStack: Layout {
+public struct ProportionalStack: Layout {
     var direction: Axis = .horizontal
     
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+    public init(direction: Axis) {
+        self.direction = direction
+    }
+    
+    public func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         return proposal.replacingUnspecifiedDimensions()
     }
     
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+    public func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
         let totalSizeFactor = subviews.map(\.containerValues.proportion).reduce(0, +)
         var origin = bounds.origin
         

@@ -47,6 +47,9 @@ ProportionalStack(direction: .horizontal) {
 .frame(width: 300, height: 300)
 ``` 
 
+The default `proportion` value is 1, the sizes are calculated based on the sum of
+all the subview's proportions
+
 ----
 
 If you want to get in contact, find me on [X](https://x.com/@kkemenes_)
