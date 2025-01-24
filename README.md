@@ -15,7 +15,7 @@ Add the following to your `Package.swift` file
 dependencies: [
   .package(
     name: "ProportionalStack",
-    url: "TODO",
+    url: "https://github.com/kemkriszt/ProportionalStack",
     .upToNextMajor(from: "1.0)
   ),
 
@@ -26,7 +26,7 @@ dependencies: [
 ### 2. Form Xcode
 
 1. Add a package by selecting `File` → `Add Package...` in the Menu bar
-2. Search for `TODO`
+2. Search for `https://github.com/kemkriszt/ProportionalStack`
 
 ### 3. Manually
 
