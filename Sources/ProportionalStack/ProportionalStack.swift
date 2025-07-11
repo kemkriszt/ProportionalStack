@@ -25,12 +25,19 @@ public struct ProportionalStack: Layout {
         self.direction = direction
     }
     
-    public func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+    public func sizeThatFits(proposal: ProposedViewSize,
+                             subviews: Subviews,
+                             cache: inout ()) -> CGSize {
         return proposal.replacingUnspecifiedDimensions()
     }
     
-    public func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-        let totalSizeFactor = subviews.map(\.containerValues.proportion).reduce(0, +)
+    public func placeSubviews(in bounds: CGRect,
+                              proposal: ProposedViewSize,
+                              subviews: Subviews,
+                              cache: inout ()) {
+        let totalSizeFactor = subviews
+            .map(\.containerValues.proportion)
+            .reduce(0, +)
         var origin = bounds.origin
         
         for view in subviews {
@@ -43,7 +50,8 @@ public struct ProportionalStack: Layout {
         }
     }
     
-    private func moveOrigin(_ origin: CGPoint, placedViewSize size: CGSize) -> CGPoint {
+    private func moveOrigin(_ origin: CGPoint,
+                            placedViewSize size: CGSize) -> CGPoint {
         return if direction == .horizontal {
             CGPoint(x: origin.x + size.width, y: origin.y)
         } else {
@@ -51,7 +59,8 @@ public struct ProportionalStack: Layout {
         }
     }
     
-    private func getSize(containerSize: CGSize, proportion: Double) -> CGSize {
+    private func getSize(containerSize: CGSize,
+                         proportion: Double) -> CGSize {
         return if direction == .horizontal {
             CGSize(width: containerSize.width * proportion,
                    height: containerSize.height)
