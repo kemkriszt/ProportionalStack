@@ -50,6 +50,22 @@ ProportionalStack(direction: .horizontal) {
 The default `proportion` value is 1, the sizes are calculated based on the sum of
 all the subview's proportions
 
+### Fixed sized views
+
+`ProportionalStack` also supports views with fixed sizes. For example:
+
+```swift
+ProportionalStack(direction: .horizontal) {
+    Color.red.proportion(3)
+    Color.green.frame(width: 100)
+    Color.blue.proportion(2)
+}
+.frame(width: 300, height: 300)
+``` 
+
+In this case, the green view would have a width of 100, and the remaining 200 points 
+would be proportionally divided between red and blue 
+
 ----
 
-If you want to get in contact, find me on [X](https://x.com/@kkemenes_)
+If you want to get in touch, find me on [X](https://x.com/@kkemenes_)
